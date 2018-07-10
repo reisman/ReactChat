@@ -1,4 +1,4 @@
-import { ADD_MESSAGE, RECEIVED_MESSAGE } from './../constants/ActionKeys';
+import { ADD_MESSAGE, RECEIVED_MESSAGE } from '../constants/ActionKeys';
 
 const Messages = (state = [], action) => {
     switch (action.type) {
@@ -10,7 +10,7 @@ const Messages = (state = [], action) => {
                     id: action.id,
                     message: action.message,
                     author: action.author,
-                }
+                },
             ];
         default:
             return state;

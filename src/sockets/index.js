@@ -6,7 +6,7 @@ const setupSocket = (dispatch, username) => {
     socket.onopen = () => {
         socket.send(JSON.stringify({
             type: keys.ADD_USER,
-            name: username
+            name: username,
         }));
     };
 
@@ -25,7 +25,7 @@ const setupSocket = (dispatch, username) => {
             default:
                 break;
         }
-    }
+    };
 
     return socket;
 };

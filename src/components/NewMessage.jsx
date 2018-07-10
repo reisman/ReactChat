@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const NewMessage = (props) => {
-    let input
+    let input;
     return (
         <section id="newmessage">
             <input onKeyPress={(e) => {

@@ -1,4 +1,4 @@
-import { ADD_USER, LIST_USERS } from './../constants/ActionKeys';
+import { ADD_USER, LIST_USERS } from '../constants/ActionKeys';
 
 const Users = (state = [], action) => {
     switch (action.type) {
@@ -8,7 +8,7 @@ const Users = (state = [], action) => {
                 {
                     name: action.name,
                     id: action.id,
-                }
+                },
             ];
         case LIST_USERS:
             return action.users;

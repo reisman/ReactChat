@@ -11,21 +11,21 @@ const broadcast = (data, ws) => {
 };
 
 server.on('connection', (ws) => {
+    const buildUsersMessage = () => JSON.stringify({
+        type: 'LIST_USERS',
+        users,
+    });
+
     let index;
     ws.on('message', (message) => {
         const data = JSON.parse(message);
         switch (data.type) {
             case 'ADD_USER': {
                 index = users.length;
-                users.push({name: data.name, id: index + 1});
-                ws.send(JSON.stringify({
-                    type: 'LIST_USERS',
-                    users
-                }));
-                broadcast({
-                    type: 'LIST_USERS',
-                    users
-                }, ws);
+                users.push({ name: data.name, id: index + 1 });
+                const usersMessage = buildUsersMessage();
+                ws.send(usersMessage);
+                broadcast(usersMessage, ws);
                 break;
             }
             case 'ADD_MESSAGE': {
@@ -43,9 +43,7 @@ server.on('connection', (ws) => {
 
     ws.on('close', () => {
         users.splice(index, 1);
-        broadcast({
-            type: 'LIST_USERS',
-            users
-        }, ws);
+        const usersMessage = buildUsersMessage();
+        broadcast(usersMessage, ws);
     });
 });

@@ -1,0 +1,17 @@
+{
+    "parserOptions": { 
+        "ecmaVersion": 6,
+        "sourceType": "module",
+    },
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y"
+    ],
+    "rules":{
+        "linebreak-style": ["error", "windows"],
+        "indent": ["error", 4, {"SwitchCase": 1}],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-one-expression-per-line": 0
+    }
+}
