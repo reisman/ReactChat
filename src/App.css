@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Gaegu');
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt');
 
 * {
   box-sizing: border-box;
@@ -6,8 +6,8 @@
   margin: 0;
 }
 body {
-    font-family: "Gaegu";
-    font-size: 300%;
+    font-family: "Rock Salt";
+    font-size: 250%;
 }
 #container {
     display: grid;
