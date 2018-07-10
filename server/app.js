@@ -2,6 +2,7 @@ const WebSocket = require('ws');
 
 const server = new WebSocket.Server({ port: 3002 });
 const users = [];
+
 const broadcast = (data, ws) => {
     server.clients.forEach((client) => {
         if (client.readyState === WebSocket.OPEN && client !== ws) {
@@ -11,7 +12,7 @@ const broadcast = (data, ws) => {
 };
 
 server.on('connection', (ws) => {
-    const buildUsersMessage = () => JSON.stringify({
+    const buildUsersMessage = () => ({
         type: 'LIST_USERS',
         users,
     });
@@ -24,7 +25,7 @@ server.on('connection', (ws) => {
                 index = users.length;
                 users.push({ name: data.name, id: index + 1 });
                 const usersMessage = buildUsersMessage();
-                ws.send(usersMessage);
+                ws.send(JSON.stringify(usersMessage));
                 broadcast(usersMessage, ws);
                 break;
             }
