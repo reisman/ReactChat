@@ -1,17 +1,33 @@
-import { ADD_USER, LIST_USERS } from '../constants/ActionKeys';
+import { ADD_USER, LIST_USERS, SET_NAME } from '../constants/ActionKeys';
 
-const Users = (state = [], action) => {
+const initialState = {
+    username: '',
+    users: [],
+};
+
+const Users = (state = initialState, action) => {
     switch (action.type) {
         case ADD_USER:
-            return [
-                ...state,
-                {
-                    name: action.name,
-                    id: action.id,
-                },
-            ];
+            return {
+                username: state.username,
+                users: [
+                    ...state.users,
+                    {
+                        name: action.name,
+                        id: action.id,
+                    },
+                ],
+            };
+        case SET_NAME:
+            return {
+                username: action.name,
+                users: state.users,
+            };
         case LIST_USERS:
-            return action.users;
+            return {
+                username: state.username,
+                users: action.users,
+            };
         default:
             return state;
     }

@@ -27,3 +27,8 @@ export const listUsers = users => ({
     type: keys.LIST_USERS,
     users,
 });
+
+export const setUserName = name => ({
+    type: keys.SET_NAME,
+    name,
+});

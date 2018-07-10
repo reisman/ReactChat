@@ -3,19 +3,18 @@ import PropTypes from 'prop-types';
 
 const NewMessage = (props) => {
     let input;
+
+    const sendMessage = (e) => {
+        if (e.key === 'Enter') {
+            const { target } = e;
+            props.addNewMessage(target.value, 'Me');
+            target.value = '';
+        }
+    };
+
     return (
         <section id="newmessage">
-            <input onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                    props.addNewMessage(input.value, 'Me');
-                    input.value = '';
-                }
-            }}
-            type="text"
-            ref={(node) => {
-                input = node;
-            }}
-            />
+            <input type="text" onKeyPress={sendMessage} ref={(node) => { input = node; }} />
         </section>
     );
 };
