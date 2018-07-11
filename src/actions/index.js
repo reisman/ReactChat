@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import * as keys from '../constants/ActionKeys';
 
 let nextMessageId = 0;
@@ -8,6 +9,7 @@ export const addMessage = (message, author) => ({
     id: nextMessageId++,
     message,
     author,
+    postedAt: moment(),
 });
 
 export const addUser = name => ({
@@ -16,11 +18,12 @@ export const addUser = name => ({
     name,
 });
 
-export const receivedMessage = (message, author) => ({
+export const receivedMessage = (message, author, postedAt) => ({
     type: keys.RECEIVED_MESSAGE,
     id: nextMessageId++,
     message,
     author,
+    postedAt: moment(postedAt),
 });
 
 export const listUsers = users => ({

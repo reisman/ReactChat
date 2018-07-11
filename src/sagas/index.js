@@ -17,6 +17,7 @@ const handleMessage = function* handleMessage(params) {
                 type: action.type,
                 author: params.usernameAccess(),
                 message: action.message,
+                postedAt: action.postedAt,
             };
             socket.send(JSON.stringify(message));
         }

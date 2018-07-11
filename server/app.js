@@ -1,3 +1,4 @@
+const moment = require('moment');
 const WebSocket = require('ws');
 
 const server = new WebSocket.Server({ port: 3002 });
@@ -34,6 +35,7 @@ server.on('connection', (ws) => {
                     type: data.type,
                     message: data.message,
                     author: data.author,
+                    postedAt: moment(),
                 }, ws);
                 break;
             }
